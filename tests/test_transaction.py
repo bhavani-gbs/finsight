@@ -5,6 +5,7 @@ from core.transaction import (
     confirm_transaction,
 )
 from core.financial_state import calculate_financial_state
+from core.decision_engine import evaluate_financial_state
 
 initialize_database()
 
@@ -62,5 +63,13 @@ print("Balance:", state.current_balance)
 print("Commitments:", state.upcoming_commitments)
 print("Spendable:", state.spendable_balance)
 print("Accounts:", state.account_balances)
+
+decisions = evaluate_financial_state(state)
+
+print("\nDECISIONS")
+print("----------------")
+
+for decision in decisions:
+    print(decision)
 
 connection.close()
