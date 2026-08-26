@@ -3,7 +3,7 @@ from datetime import datetime
 
 VALID_TYPES = {"incoming", "outgoing", "transfer"}
 VALID_STATUSES = {"pending", "confirmed", "failed", "refunded","discarded"}
-VALID_SOURCES = {"manual", "sms", "screenshot"}
+VALID_SOURCES = {"manual", "sms", "screenshot","seed"}
 
 
 def validate_transaction(
