@@ -4,13 +4,13 @@ from core.transaction import (
     get_transactions,
     confirm_transaction,
 )
-
+from core.financial_state import calculate_financial_state
 
 initialize_database()
 
 connection = get_connection()
 
-# Create a test user
+'''# Create a test user
 cursor = connection.execute(
     "INSERT INTO users (name) VALUES (?)",
     ("Demo User",),
@@ -50,6 +50,17 @@ for transaction in transactions:
 
 confirm_transaction(connection, transaction_id)
 
-print("Transaction confirmed.")
+print("Transaction confirmed.")'''
+
+state = calculate_financial_state(connection)
+
+print("\nFINANCIAL STATE")
+print("----------------")
+print("Incoming:", state.total_incoming)
+print("Outgoing:", state.total_outgoing)
+print("Balance:", state.current_balance)
+print("Commitments:", state.upcoming_commitments)
+print("Spendable:", state.spendable_balance)
+print("Accounts:", state.account_balances)
 
 connection.close()
